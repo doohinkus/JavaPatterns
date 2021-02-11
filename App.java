@@ -1,3 +1,6 @@
+import DependencyInversion.DatabaseHandler;
+import DependencyInversion.MySQLDb;
+import DependencyInversion.OracleDb;
 import LiskovSubstituionPrinciple.*;
 import SingleResponsibility.MergeSort;
 import SingleResponsibility.SorterManager;
@@ -27,7 +30,10 @@ public class App {
         tesla.chargeVehicle();
         tacoma.speed();
 
-//        book1.save();
+//        Dependecncy Inversion we INJECT the db we want to handle
+        DatabaseHandler databaseHandler = new DatabaseHandler(new OracleDb());
+        databaseHandler.connect();
+        databaseHandler.disconnect();
 
 
     }
