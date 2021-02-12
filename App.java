@@ -4,6 +4,10 @@ import DependencyInversion.OracleDb;
 import LiskovSubstituionPrinciple.*;
 import SingleResponsibility.MergeSort;
 import SingleResponsibility.SorterManager;
+import Strategy.Add;
+import Strategy.Manager;
+import Strategy.Multiply;
+import Strategy.Subtract;
 
 public class App {
     public static void main(String [] args){
@@ -34,7 +38,10 @@ public class App {
         DatabaseHandler databaseHandler = new DatabaseHandler(new OracleDb());
         databaseHandler.connect();
         databaseHandler.disconnect();
-
+// Strategy pattern
+        Manager manager = new Manager();
+        manager.setStrategy(new Subtract());
+        manager.operation(3192,123);
 
     }
 }
