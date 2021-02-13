@@ -2,6 +2,8 @@ import DependencyInversion.DatabaseHandler;
 import DependencyInversion.MySQLDb;
 import DependencyInversion.OracleDb;
 import LiskovSubstituionPrinciple.*;
+import Observer.WeatherObserver;
+import Observer.WeatherStation;
 import SingleResponsibility.MergeSort;
 import SingleResponsibility.SorterManager;
 import Strategy.Add;
@@ -42,6 +44,15 @@ public class App {
         Manager manager = new Manager();
         manager.setStrategy(new Subtract());
         manager.operation(3192,123);
+
+
+        // Observer pattern
+        WeatherStation station = new WeatherStation();
+        WeatherObserver observer = new WeatherObserver(station);
+
+        station.setHumidity(300);
+        station.setPressure(57);
+        station.setTemperature(68);
 
     }
 }
