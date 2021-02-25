@@ -1,15 +1,19 @@
+import BetterSingleton.BetterSingleton;
 import Command.*;
 //import CommandII.Algorithm;
 import DependencyInversion.DatabaseHandler;
 import DependencyInversion.MySQLDb;
 import DependencyInversion.OracleDb;
+import Factory.AlgorithmFactory;
 import Iterator.Iterator;
 import Iterator.NameRepository;
 import LiskovSubstituionPrinciple.*;
 import Observer.WeatherObserver;
 import Observer.WeatherStation;
 import SingleResponsibility.MergeSort;
+import SingleResponsibility.Sorter;
 import SingleResponsibility.SorterManager;
+import Singleton.Downloader;
 import Strategy.Add;
 import Strategy.Manager;
 import Strategy.Multiply;
@@ -17,6 +21,10 @@ import Strategy.Subtract;
 import Template.Algorithm;
 import Template.BubbleSort;
 import Template.InsertionSort;
+import VisitorPattern.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     public static void main(String [] args){
@@ -105,7 +113,29 @@ public class App {
         int numbers[] = {1,3,4,5,6,7,23,123,2,5};
         Algorithm sortAlgorithm = new InsertionSort(numbers);
         sortAlgorithm.sort();
+// VISITOR pattern
+        List<ShoppingItem> item = new ArrayList<>();
+        item.add(new Table("desk", 12.34));
+        item.add(new Table("desktop", 11.34));
+        item.add(new Chair("folding", 4.56));
+        double sum = 0.00;
+        ShoppingCartVisitor shoppingCart = new ShoppingCart();
+        for(ShoppingItem shoppingItem : item){
+            sum = sum + shoppingItem.accept(shoppingCart);
+        }
+        System.out.println("The total is " + sum);
+        // Singleton only one object see below
+        Downloader d1 = Downloader.getInstance();
+        Downloader d2 = Downloader.getInstance();
+        d1.startDownload();
+        d2.startDownload();
 
-
+        System.out.println(d1 == d2);
+// Better singleton
+        BetterSingleton.INSTANCE.setCounter(17);
+        System.out.println(BetterSingleton.INSTANCE.getCounter());
+// Factory
+        Sorter algorithm = AlgorithmFactory.createSorter(AlgorithmFactory.MERGE_SORT);
+        algorithm.sort();
     }
 }
