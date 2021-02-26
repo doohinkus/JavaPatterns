@@ -1,4 +1,5 @@
 import BetterSingleton.BetterSingleton;
+import Builder.Person;
 import Command.*;
 //import CommandII.Algorithm;
 import DependencyInversion.DatabaseHandler;
@@ -137,5 +138,18 @@ public class App {
 // Factory
         Sorter algorithm = AlgorithmFactory.createSorter(AlgorithmFactory.MERGE_SORT);
         algorithm.sort();
+
+
+        //Builder
+
+        Person p = new Person.Builder("Jim", "gasdf@gmail.com")
+                .setAge(27)
+                .setAddress("some address")
+                .build();
+        Person d = new Person.Builder("Jack", "pudir@gmail.com")
+                .setAge(29)
+                .setAddress("some other address")
+                .build();
+        System.out.println(p + " " + d);
     }
 }
