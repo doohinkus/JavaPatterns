@@ -14,6 +14,10 @@ import Observer.WeatherStation;
 import SingleResponsibility.MergeSort;
 import SingleResponsibility.Sorter;
 import SingleResponsibility.SorterManager;
+import SingleResponsibilityII.InputProcessor;
+import SingleResponsibilityII.Operation;
+import SingleResponsibilityII.Pair;
+import SingleResponsibilityII.ViolationChecker;
 import Singleton.Downloader;
 import Strategy.Add;
 import Strategy.Manager;
@@ -35,7 +39,19 @@ public class App {
         SorterManager sorterManager = new SorterManager();
         // USAGE
         sorterManager.sort(new MergeSort());
+// single responsibility II
+        Pair pair = InputProcessor.process();
+        if(!ViolationChecker.isValid(pair)){
+            System.out.println(" Not kewl, enter numbers");
+            return;
+        }
+        int firstInt = Operation.numberize(pair.getFirst());
+        int secondInt = Operation.numberize(pair.getSecond());
 
+        System.out.println(
+                "The sum is " +
+                Operation.execute(firstInt, secondInt)
+        );
 
         // LISKOV subsitution principle
         // using parent type does NOT break
@@ -144,12 +160,14 @@ public class App {
 
         Person p = new Person.Builder("Jim", "gasdf@gmail.com")
                 .setAge(27)
+                .setHobby("swimming")
                 .setAddress("some address")
                 .build();
         Person d = new Person.Builder("Jack", "pudir@gmail.com")
                 .setAge(29)
                 .setAddress("some other address")
+                .setHobby("electronics")
                 .build();
-        System.out.println(p + " " + d);
+        System.out.println(p + "" + d);
     }
 }
