@@ -1,11 +1,13 @@
+import AlgorithmQuestions.AIInterviewQuestions;
+import AlgorithmQuestions.InterviewQuestionProcessor;
 import BetterSingleton.BetterSingleton;
 import Builder.Person;
 import Command.*;
 //import CommandII.Algorithm;
-import DependencyInversion.DatabaseHandler;
-import DependencyInversion.MySQLDb;
-import DependencyInversion.OracleDb;
+import DependencyInversion.*;
 import Factory.AlgorithmFactory;
+import FunctionalProgramming.FPProcessor;
+import FunctionalProgramming.Recursion;
 import Iterator.Iterator;
 import Iterator.NameRepository;
 import LiskovSubstituionPrinciple.*;
@@ -52,6 +54,10 @@ public class App {
                 "The sum is " +
                 Operation.execute(firstInt, secondInt)
         );
+//OPEN CLOSED PRINCIPLE
+        InterviewQuestionProcessor.process(new AIInterviewQuestions());
+        FPProcessor.ask(new Recursion());
+
 
         // LISKOV subsitution principle
         // using parent type does NOT break
@@ -72,6 +78,11 @@ public class App {
         DatabaseHandler databaseHandler = new DatabaseHandler(new OracleDb());
         databaseHandler.connect();
         databaseHandler.disconnect();
+
+//        PaymentHandler paymentHandler = new PaymentHandler(new Skrill());
+//        paymentHandler.makePayment(23.12);
+        Webstore store = new Webstore();
+        store.pay(12.23);
 // Strategy pattern
         Manager manager = new Manager();
         manager.setStrategy(new Subtract());
