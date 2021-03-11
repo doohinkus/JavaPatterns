@@ -3,6 +3,7 @@ import AlgorithmQuestions.AIInterviewQuestions;
 import AlgorithmQuestions.InterviewQuestionProcessor;
 import BetterSingleton.BetterSingleton;
 import Builder.Person;
+import Builder.Student;
 import Command.*;
 //import CommandII.Algorithm;
 import DependencyInversion.*;
@@ -186,6 +187,11 @@ public class App {
                 .setAddress("some other address")
                 .setHobby("electronics")
                 .build();
-        System.out.println(p + "" + d);
+
+        Student danny = new Student.
+                Builder("Danny", "Stanford")
+                .setAge(23)
+                .build();
+        System.out.println(p + "" + d + " " + danny);
     }
 }
