@@ -1,3 +1,4 @@
+import AbstractFactory.*;
 import AlgorithmQuestions.AIInterviewQuestions;
 import AlgorithmQuestions.InterviewQuestionProcessor;
 import BetterSingleton.BetterSingleton;
@@ -6,6 +7,9 @@ import Command.*;
 //import CommandII.Algorithm;
 import DependencyInversion.*;
 import Factory.AlgorithmFactory;
+import Factory.Animal;
+import Factory.AnimalFactory;
+import Factory.AnimalType;
 import FunctionalProgramming.FPProcessor;
 import FunctionalProgramming.Recursion;
 import Iterator.Iterator;
@@ -29,7 +33,6 @@ import Template.Algorithm;
 import Template.BubbleSort;
 import Template.InsertionSort;
 import VisitorPattern.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,9 +168,13 @@ public class App {
 // Factory
         Sorter algorithm = AlgorithmFactory.createSorter(AlgorithmFactory.MERGE_SORT);
         algorithm.sort();
+        Animal animal = AnimalFactory.getAnimal(AnimalType.DOG);
+        animal.eat();
+        animal.noise();
 
-
-        //Builder
+        AbstractFactory carFactory = FactoryProducer.getFactory("PETROL");
+        carFactory.getCar("FORD").assemble();
+        //Builder MUST BUILD the person
 
         Person p = new Person.Builder("Jim", "gasdf@gmail.com")
                 .setAge(27)

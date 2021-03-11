@@ -6,7 +6,7 @@ public class Person {
     private String address;
     private int age;
     private String hobby;
-
+// use BUILDER as PARAM
     public Person(Builder builder){
      this.name = builder.name;
      this.email = builder.email;
@@ -15,26 +15,31 @@ public class Person {
      this.hobby = builder.hobby;
     }
     public static class Builder{
+        // final means field is mandatory
         private final String name;
         private final String email;
+        // these fields are NOT mandatory
         private String address;
         private int age;
         private String hobby;
 
         public Builder(String name, String email){
+            // set the mandatory fields
             this.name = name;
             this.email = email;
         }
-
+        // set optionsl fields
         public Builder setAddress(String address){
             this.address = address;
             return this;
         }
+        // set optionsl fields
 
         public Builder setAge(int age){
             this.age = age;
             return this;
         }
+        // set optionsl fields
 
         public Builder setHobby(String hobby){
             this.hobby = hobby;
