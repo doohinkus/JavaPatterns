@@ -30,6 +30,9 @@ import Strategy.Add;
 import Strategy.Manager;
 import Strategy.Multiply;
 import Strategy.Subtract;
+import StrategyImage.Laptop;
+import StrategyImage.RenderManager;
+import StrategyImage.TV;
 import Template.Algorithm;
 import Template.BubbleSort;
 import Template.InsertionSort;
@@ -91,6 +94,10 @@ public class App {
         Manager manager = new Manager();
         manager.setStrategy(new Subtract());
         manager.operation(3192,123);
+
+        RenderManager renderManager= new RenderManager();
+        renderManager.setRenderer(new TV());
+        renderManager.render();
 
 
         // Observer pattern
