@@ -26,6 +26,7 @@ import SingleResponsibilityII.Operation;
 import SingleResponsibilityII.Pair;
 import SingleResponsibilityII.ViolationChecker;
 import Singleton.Downloader;
+import StockExchange.*;
 import Strategy.Add;
 import Strategy.Manager;
 import Strategy.Multiply;
@@ -107,6 +108,14 @@ public class App {
         station.setHumidity(300);
         station.setPressure(57);
         station.setTemperature(68);
+
+        StockExchange stockExchange = new StockExchange();
+        stockExchange.addWatcher(new BuyStock());
+        stockExchange.addWatcher(new SellStock());
+
+        stockExchange.start();
+        // < 95 buy
+        // > 105 sell
 
 
         // Command pattern
