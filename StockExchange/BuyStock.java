@@ -2,11 +2,11 @@ package StockExchange;
 
 public class BuyStock implements Watcher{
     private float price;
-    private Stock stock;
+    private StockController stockController;
 
-   public BuyStock(Stock stock){
-        this.stock = stock;
-        this.stock.addWatcher(this);
+   public BuyStock(StockController stockController){
+        this.stockController = stockController;
+        this.stockController.addWatcher(this);
    }
 
     public BuyStock() {

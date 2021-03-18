@@ -1,6 +1,6 @@
 package StockExchange;
 
-public interface Stock {
+public interface StockController {
     public void addWatcher(Watcher watcher);
     public void notifyStocks();
 }

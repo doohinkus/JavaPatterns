@@ -1,16 +1,14 @@
 package StockExchange;
 
-import Observer.Observer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class StockExchange implements Stock{
+public class StockControllerExchange implements StockController {
     private float price = 100;
     private Random random;
     private List<Watcher> stockList;
-    public StockExchange(){
+    public StockControllerExchange(){
         this.stockList = new ArrayList<>();
         random = new Random();
     }

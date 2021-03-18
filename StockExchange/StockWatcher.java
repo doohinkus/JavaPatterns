@@ -2,10 +2,10 @@ package StockExchange;
 
 public class StockWatcher implements Watcher{
     private float price;
-    private Stock stock;
-    public StockWatcher(Stock stock){
-      this.stock = stock;
-      this.stock.addWatcher(this);
+    private StockController stockController;
+    public StockWatcher(StockController stockController){
+      this.stockController = stockController;
+      this.stockController.addWatcher(this);
     }
 
     public StockWatcher() {

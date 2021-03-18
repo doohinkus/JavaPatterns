@@ -27,15 +27,11 @@ import SingleResponsibilityII.Pair;
 import SingleResponsibilityII.ViolationChecker;
 import Singleton.Downloader;
 import StockExchange.*;
-import Strategy.Add;
 import Strategy.Manager;
-import Strategy.Multiply;
 import Strategy.Subtract;
-import StrategyImage.Laptop;
 import StrategyImage.RenderManager;
 import StrategyImage.TV;
 import Template.Algorithm;
-import Template.BubbleSort;
 import Template.InsertionSort;
 import VisitorPattern.*;
 import java.util.ArrayList;
@@ -109,7 +105,7 @@ public class App {
         station.setPressure(57);
         station.setTemperature(68);
 
-        StockExchange stockExchange = new StockExchange();
+        StockControllerExchange stockExchange = new StockControllerExchange();
         stockExchange.addWatcher(new BuyStock());
         stockExchange.addWatcher(new SellStock());
 
