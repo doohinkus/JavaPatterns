@@ -40,7 +40,7 @@ public void setPrice(float price){
         for(Watcher watcher : this.stockList){
             watcher.update(price);
 
-            sellStock(price);
+//            sellStock(price);
 //            buyStock(price);
 
         }
