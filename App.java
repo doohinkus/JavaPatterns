@@ -6,6 +6,10 @@ import Builder.Person;
 import Builder.Student;
 import Command.*;
 //import CommandII.Algorithm;
+import Decorator.Beverage;
+import Decorator.Milk;
+import Decorator.Water;
+import Decorator.Whiskey;
 import DependencyInversion.*;
 import Factory.AlgorithmFactory;
 import Factory.Animal;
@@ -31,8 +35,7 @@ import Strategy.Manager;
 import Strategy.Subtract;
 import StrategyImage.RenderManager;
 import StrategyImage.TV;
-import Template.Algorithm;
-import Template.InsertionSort;
+import Template.*;
 import VisitorPattern.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +80,18 @@ public class App {
 
         tesla.chargeVehicle();
         tacoma.speed();
+
+        //TEMPLATE PATTERN
+        Game basket = new Basketball();
+        basket.playGame();
+        Game foot = new Football();
+        foot.playGame();
+
+
+        // DECORATOR
+        Beverage b = new Whiskey(new Milk(new Water()));
+        System.out.println("beverage cost " + b.getCost());
+        System.out.println(" desc " + b.getDescription());
 
 // Dependecncy Inversion we INJECT the db we want to handle
         DatabaseHandler databaseHandler = new DatabaseHandler(new OracleDb());
@@ -157,6 +172,10 @@ public class App {
         int numbers[] = {1,3,4,5,6,7,23,123,2,5};
         Algorithm sortAlgorithm = new InsertionSort(numbers);
         sortAlgorithm.sort();
+
+
+
+
 // VISITOR pattern
         List<ShoppingItem> item = new ArrayList<>();
         item.add(new Table("desk", 12.34));
@@ -168,6 +187,8 @@ public class App {
             sum = sum + shoppingItem.accept(shoppingCart);
         }
         System.out.println("The total is " + sum);
+
+        Shape shape = new Circle(2,"circle");
         // Singleton only one object see below
         Downloader d1 = Downloader.getInstance();
         Downloader d2 = Downloader.getInstance();
