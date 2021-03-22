@@ -1,4 +1,8 @@
 import AbstractFactory.*;
+import Adapter.Bicycle;
+import Adapter.BicycleAdapter;
+import Adapter.Bus;
+import Adapter.Motor;
 import AlgorithmQuestions.AIInterviewQuestions;
 import AlgorithmQuestions.InterviewQuestionProcessor;
 import BetterSingleton.BetterSingleton;
@@ -92,6 +96,14 @@ public class App {
         Beverage b = new Whiskey(new Milk(new Water()));
         System.out.println("beverage cost " + b.getCost());
         System.out.println(" desc " + b.getDescription());
+
+        // ADAPTER
+        Motor bus = new Bus();
+        Motor bike = new BicycleAdapter(new Bicycle());
+
+        bike.accelerate();
+        bus.accelerate();
+
 
 // Dependecncy Inversion we INJECT the db we want to handle
         DatabaseHandler databaseHandler = new DatabaseHandler(new OracleDb());
